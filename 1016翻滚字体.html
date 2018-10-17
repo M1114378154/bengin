@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻转的文字</title>
+	<style>
+	body{
+		padding:185px;
+		color:pink;
+	}
+	span{
+		font-size: 100px;
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		position: relative;
+	}
+	span:before,span:after{
+		content:attr(data-q);
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform-origin: left center;
+		transition:all 0.3s linear 0s;
+	}
+	span:before{
+		color:skyblue;
+		z-index: 3;
+		transform:rotateY(10deg);
+	}
+	span:after{
+		color:rgba(0,0,0,0.3);
+		z-index:2;
+		transform: rotateY(0deg) scale(1.1, 1);
+	}
+	span:hover:before{
+		transform:rotateY(40deg) skew(0deg, 3deg);
+	}
+	span:hover:after{
+		transform:rotateY(40deg) skew(0deg,20deg);
+	}
+	
+	</style>
+</head>
+<body>
+	<div>
+		<a href="../bengin/index.html">返回目录</a>
+	</div>
+	<span data-q="把">把</span>
+	<span data-q="故">故</span>
+	<span data-q="事">事</span>
+	<span data-q="往">往</span>
+	<span data-q="心">心</span>
+	<span data-q="里">里</span>
+	<span data-q="收">收</span>
+	<span data-q="一">一</span>
+	<span data-q="收">收</span>
+</body>
+</html>
