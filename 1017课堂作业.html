@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        img{
+            display: block;
+        }
+        .image{
+            width: 800px;
+            height: 500px;
+            padding: 3px;
+            margin: 100px auto;
+            border: 1px solid salmon;
+            background-color: aliceblue;
+            border-radius: 8px;
+        }
+        .image  ul{
+            width: 800px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        .image li{
+            position: absolute;
+            top: -550px;
+            
+        }
+        .image li:first-child{
+            top:0;
+        }
+        .image li:nth-child(1){
+            animation: one 5s linear infinite;
+        }
+        .image li:nth-child(2){
+            animation: two 5s linear infinite;
+        }
+        .image li:nth-child(3){
+            animation: three 5s linear infinite;
+        }
+
+        @keyframes one{
+            0%  {top: 0px;}
+			4%  {top: 0px;}
+			16% {top: 0px; opacity: 1; z-index: 0;} 
+			20% {top: 550px; opacity: 0; z-index: 0;}
+			21% {top: -550px; opacity: 0; z-index: -1;}
+			50% {top: -550px; opacity: 0; z-index: -1;}
+			92% {top: -550px; opacity: 0; z-index: 0;}
+			96% {top: -550px; opacity: 0;}
+			100%{top: 0px; opacity: 1;}
+		 }
+         @keyframes two {
+			0%  {top: -550px; opacity: 0;}
+			16% {top: -550px; opacity: 0;}
+			20% {top: 0px; opacity: 1;}
+			24% {top: 0px; opacity: 1;} 
+			36% {top: 0px; opacity: 1; z-index: 0;} 
+			40% {top: 550px; opacity: 0; z-index: 0;}
+			41% {top: -550px; opacity: 0; z-index: -1;}  
+			100%{top: -550px; opacity: 0; z-index: -1;}
+		
+		}
+
+		@keyframes three {
+            /* 0%  { top:-550px; opacity:0; }
+			76% { top:-550px; opacity:0; }
+			80% { top:0px; opacity:1; }
+			84% { top:0px; opacity:1; }
+			96% { top:0px; opacity:1; z-index:0; }
+			100%{ top:550px; opacity:0; z-index:0; }
+	 */
+            0%  {top: -550px; opacity: 0;}
+			36% {top: -550px; opacity: 0;}
+			40% {top: 0px; opacity: 1;}
+			44% {top: 0px; opacity: 1;} 
+			56% {top: 0px; opacity: 1; z-index: 0;} 
+			60% {top: 550px; opacity: 0; z-index: 0;} 
+			61% {top: -550px; opacity: 0; z-index: -1;}
+			100%{top: -550px; opacity: 1; z-index: -1;}
+		
+		}
+
+    </style>
+</head>
+<body>
+    <div class="image">
+        <ul>
+            <li> <img src="../bengin/image/1.jpg" alt=""> </li>
+            <li> <img src="../bengin/image/2.jpg" alt=""> </li>
+            <li> <img src="../bengin/image/3.jpg" alt=""> </li>
+        </ul>
+    </div>
+</body>
+</html>
