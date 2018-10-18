@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 12px;
+    font-family: "Open Sans", serif;
+    /* min-width: 960px; */
+    margin: 0;
+    padding: 0;
+    color: #aaa;
+        }
+        body, ul, li {
+			margin: 0;
+			padding: 0;
+        }
+        img{
+            display: block;
+            width: 680px;
+            height: 345px;
+        }
+        #image{
+            width: 680px;
+			height: 320px;
+			padding: 5px;
+			margin: 100px auto;
+			border: 1px solid #CCC;
+			background-color: #F2F2F2;
+			border-radius: 5px;
+        }
+        #image ul{
+            width: 100%;
+			height: 100%;
+			position: relative;
+			overflow: hidden;
+        }
+        #image li{
+            position: absolute;
+			top: -425px;
+        }
+
+     .container {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 960px;
+     }
+    .content h1 {
+    font-size: 48px;
+    color: #000;
+     /*添加阴影 */
+     text-shadow: 0px 1px 1px #f4f4f4;
+    text-align: center;
+    padding: 60px 0 30px;
+    margin: 0; 
+     /* 垂直对齐（根据父元素的基础上)  */
+     vertical-align: baseline;
+     } 
+#content-slider {
+    width: 100%;
+    height: 360px;
+    margin: 10px auto 0;
+}
+#image {
+    background: #000;
+    border: 5px solid #eaeaea;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+    height: 425px;
+    width: 680px;
+    margin: 40px auto 0;
+    overflow: visible;
+    position: relative;
+}
+#mask {
+    overflow: hidden;
+    height: 425px;
+    
+
+}
+#image ul {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#image li.firstanimation {
+    -webkit-animation: cycle 25s linear infinite;
+}
+#image li {
+    width: 680px;
+    height: 320px;
+    position: absolute;
+    top: -425px;
+    list-style: none;
+}
+#image .tooltip{
+    background: rgba(0,0,0,0.5);
+    width: 300px;
+    height: 60px;
+    position: relative;
+    bottom: 75px;
+    left: 0;
+    bottom: 90px;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+#image .tooltip h1 {
+	color:#fff;
+	font-size:24px;
+	font-weight:300;
+	line-height:60px;
+	padding:0 0 0 20px;
+}
+.progress-bar {
+    position: relative;
+    top: -85px;
+    width: 680px;
+    height: 5px;
+    background: wheat;
+    -webkit-animation: fullexpand 25s ease-out infinite;
+    
+}
+
+
+      
+
+        #image li:first-child{
+            top: 0;
+        }
+        #image li:nth-child(1){
+            animation: one 10s linear infinite;
+        }
+        #image li:nth-child(2){
+            animation: two 10s linear infinite;
+        }
+        #image li:nth-child(3){
+            animation: three 10s linear infinite;
+        }
+        #image li:nth-child(4){
+            animation: four 10s linear infinite;
+        }
+        #image li:nth-child(5){
+            animation: five 10s linear infinite;
+        }
+
+        @keyframes one{
+            0%  {top: 0px;}
+			4%  {top: 0px;}
+			16% {top: 0px; opacity: 1; z-index: 0;} 
+			20% {top: 425px; opacity: 0; z-index: 0;}
+			21% {top: -425px; opacity: 0; z-index: -1;}
+			50% {top: -425px; opacity: 0; z-index: -1;}
+			92% {top: -425px; opacity: 0; z-index: 0;}
+			96% {top: -425px; opacity: 0;}
+			100%{top: 0px; opacity: 1;}
+        }
+        @keyframes two {
+			0%  {top: -425px; opacity: 0;}
+			16% {top: -425px; opacity: 0;}
+			20% {top: 0px; opacity: 1;}
+			24% {top: 0px; opacity: 1;} 
+			36% {top: 0px; opacity: 1; z-index: 0;} 
+			40% {top: 425px; opacity: 0; z-index: 0;}
+			41% {top: -425px; opacity: 0; z-index: -1;}  
+			100%{top: -425px; opacity: 0; z-index: -1;}
+		}
+        @keyframes three {
+			0%  {top: -425px; opacity: 0;}
+			36% {top: -425px; opacity: 0;}
+			40% {top: 0px; opacity: 1;}
+			44% {top: 0px; opacity: 1;} 
+			56% {top: 0px; opacity: 1; z-index: 0;} 
+			60% {top: 425px; opacity: 0; z-index: 0;} 
+			61% {top: -425px; opacity: 0; z-index: -1;}
+			100%{top: -425px; opacity: 0; z-index: -1;}
+		}
+
+		@keyframes four {
+			0%  {top: -425px; opacity: 0;}
+			56% {top: -425px; opacity: 0;}
+			60% {top: 0px; opacity: 1;}
+			64% {top: 0px; opacity: 1;}
+			76% {top: 0px; opacity: 1; z-index: 0;}
+			80% {top: 425px; opacity: 0; z-index: 0;}
+			81% {top: -425px; opacity: 0; z-index: -1;}
+			100%{top: -425px; opacity: 0; z-index: -1;}
+		}
+
+		@keyframes five {
+			0%  { top:-425px; opacity:0; }
+			76% { top:-425px; opacity:0; }
+			80% { top:0px; opacity:1; }
+			84% { top:0px; opacity:1; }
+			96% { top:0px; opacity:1; z-index:0; }
+			100%{ top:425px; opacity:0; z-index:0; }
+		}
+
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Bengin  Again</h1>
+    </div>
+    <!-- <div class="image"> -->
+        
+            <div class="container">
+                <div id="content-slider">
+                    <div id="image">
+                    <div id="mask">
+                     <ul>   
+                         <li id="first" class="firstanimation">
+                             <a href="#">
+                             <img src="./image/甜品1.jpg" alt="">
+                            </a>
+                            <div class="tooltip">
+                            <h1>CAKE</h1>
+                            </div>
+                            </li>
+                          <li id="second" class="secondanimation">
+                              <a href="#">
+                                  <img src="./image/甜品2.jpg alt="">
+                              </a>
+                              <div class="tooltip">
+                               <h1>CAKE</h1>
+                              </div>
+                             </li>
+                             <li id="third" class="thirdanimation">
+                                    <a href="#">
+                                        <img src="./image/甜品3.jpg" alt="">
+                                    </a>
+                                    <div class="tooltip">
+                                     <h1>CAKE</h1>
+                                    </div>
+                                   </li>
+                                   <li id="fourth" class="fourthanimation">
+                                        <a href="#">
+                                            <img src="./image/甜品4.jpg" alt="">
+                                        </a>
+                                        <div class="tooltip">
+                                         <h1>CAKE</h1>
+                                        </div>
+                                       </li> 
+                                       <li id="fifth" class="fifthanimation">
+                                            <a href="#">
+                                                <img src="./image/甜品5.jpg" alt="">
+                                            </a>
+                                            <div class="tooltip">
+                                             <h1>CAKE</h1>
+                                            </div>
+                                           </li>
+                                         </ul>     
+                          </div>
+                         <!-- 延时线条 -->
+                          <div class="progress-bar"></div>
+                    </div>
+              </div>
+              </div>
+        
+    <!-- </div> -->
+</body>
+</html>
