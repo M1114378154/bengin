@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            border: 0;
+        }
+
+        .flex-card-image img {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 60%;
+    width: 50%;
+    }
+        .demo-display {
+    background:skyblue;
+    border-bottom: 3px solid pink;
+    
+}
+.demo-display {
+    margin: 0 auto;
+    padding: 1em 5% 2em;
+    width: 100%;
+}
+.l-fullheight {
+    min-height: 100vh;
+}
+.demo-display {
+    box-sizing: border-box;
+    font-family: europa,sans-serif;
+}
+.flex-card{
+    background: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    padding: 0.6em;
+    margin: 10px;
+    
+}
+.flex-card-button{
+    background: #7b7b7b;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    padding: 1em .40em;
+    /* 去掉下划线 */
+    text-decoration: none;
+    transition:  3s ease;
+    text-align: center;
+}
+
+
+
+        .flexbox .flex-card-list{
+            /* 让弹性盒元素在必要的时候拆行 */
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 100%;
+          }
+        .flexbox .flex-card-listitem{
+            /* 使用flexbox可以控制卡模块 */
+            display: flex;
+        }
+        /* 将布局调整为每行2张卡 */
+        @media all and (min-width:40em){
+            /* 浮动布局 */
+            .flex-card-list li{
+                width: 50%;
+                list-style-type: none;
+            }
+            /*.no-flexbox*/ .flex-card-list li{
+                float: left;
+                list-style-type: none;
+            }
+        }
+        /* 将布局调整为每行3张卡 */
+        @media all and (min-width:40em) and (max-width:60em){
+            /* 清除每行2个项目的行 */
+             /*.no-flexbox*/ .flex-card-list li:nth-child(2n+1){
+                 clear: both;
+                 list-style-type: none;
+             }
+        }
+        @media all and (min-width:60em){
+            /* flex and non-flex共有的 */
+            .flex-card-list li{
+                width: 33.33%;
+                list-style-type: none;
+            }
+            /* 浮标：每第三项后清除 */
+             /*.no-flexbox*/  .flex-card-list li:nth-child(3n+1){
+                 clear: both;
+                 list-style-type: none;
+             }
+        }
+        .flexbox .flex-card{
+            /* 弹性盒元素的方向为垂直显示 */
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+           
+        }
+        .flexbox .flex-card-content{
+            display: flex;
+            flex: 1 0 auto;
+            flex-direction: column;
+        }
+        .flexbox .flex-card-content p{
+            flex: 1 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <figure class="demo-display l-fullheight">
+    <!-- 卡片列表 -->
+    <ul class="flex-card-list">
+        <!-- 卡片列表项 -->
+     <li class="flex-card-listitem">
+         <!-- 卡片模块 -->
+         <div class="flex-card">
+             <!-- 图像容器 -->
+             <div class="flex-card-image">
+              <img src="./image/月亮.jpg" alt="">
+             </div>
+             <!-- 内容容器 -->
+             <div class="flex-card-content">
+              <h3 class="flex-card-heading"></h3>
+              <p>  Moon</p>
+              <a href="#" class="flex-card-button">Welcome</a>
+             </div>
+           </div>
+         </li>
+
+         <li class="flex-card-listitem">
+         <!-- 卡片模块 -->
+         <div class="flex-card">
+             <!-- 图像容器 -->
+             <div class="flex-card-image">
+              <img src="./image/月亮.jpg" alt="">
+             </div>
+             <!-- 内容容器 -->
+             <div class="flex-card-content">
+              <h3 class="flex-card-heading"></h3>
+              <p>  Moon</p>
+              <a href="#" class="flex-card-button">Welcome</a>
+             </div>
+           </div>
+         </li>
+
+          <li class="flex-card-listitem">
+         <!-- 卡片模块 -->
+         <div class="flex-card">
+             <!-- 图像容器 -->
+             <div class="flex-card-image">
+              <img src="./image/月亮.jpg" alt="">
+             </div>
+             <!-- 内容容器 -->
+             <div class="flex-card-content">
+              <h3 class="flex-card-heading"></h3>
+              <p>  Moon</p>
+              <a href="#" class="flex-card-button">Welcome</a>
+             </div>
+           </div>
+         </li>
+
+             <li class="flex-card-listitem">
+         <!-- 卡片模块 -->
+         <div class="flex-card">
+             <!-- 图像容器 -->
+             <div class="flex-card-image">
+              <img src="./image/月亮.jpg" alt="">
+             </div>
+             <!-- 内容容器 -->
+             <div class="flex-card-content">
+              <h3 class="flex-card-heading"></h3>
+              <p>  Moon</p>
+              <a href="#" class="flex-card-button">Welcome</a>
+             </div>
+           </div>
+         </li>
+  
+    </ul>
+</figure>
+</body>
+</html>
