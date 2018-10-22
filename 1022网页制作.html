@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+    body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, img {margin:0;padding:0;border:0;list-style: none;}
+body{font-family:"微软雅黑",Arial, Helvetica, sans-serif; font-size:14px;}
+a{color:rgb(255, 251, 7);text-decoration: none;}
+a:hover{color:#fff;}
+input,textarea{outline: none;}
+
+.box{
+    width: 100%;
+    height: 680px;
+    overflow: hidden;
+    position: relative;
+}
+.box video{
+    width:100%;
+	min-width: 1280px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.box header{
+    width:100%;
+	height:40px;
+	background: skyblue;
+	z-index: 999;
+	position: absolute;
+}
+.box header .con{
+    width:1030px;
+	height:40px;
+	margin:0 auto;
+}
+.box header .left{
+    width:75px;
+    height:10px;
+    /* background: url(./image/网页logo.png) 0 0 no-repeat; */
+   
+}
+.box header .right{
+    margin-top: 10px;
+	float: right;
+}
+.box header .right a{
+    margin-right: 10px;
+}
+.box nav{
+    width:100%;
+	height:90px;
+	background: rgba(0,0,0,0.2);
+	z-index: 1000;
+	position: absolute;
+	top:40px;
+	border-bottom: 1px solid #fff;
+}
+.box nav ul{
+    width:1030px;
+	height:90px;
+	margin:0 auto;
+	position: relative;
+}
+.box nav ul li{
+    float: left;
+    margin-right: 19%;
+}
+.box nav ul .left:hover aside{display: block;}
+.box nav ul .left a {
+    display: block;
+	height:90px;
+	line-height: 90px;
+	font-size: 20px;
+	color:#fff;
+}
+.box nav ul .left a img{vertical-align: middle;}
+.box  nav ul .left a span{margin:0 10px;}
+.box aside{
+    display: none;
+	width:380px;
+	height:560px;
+	background: rgba(0,0,0,0.3);
+	position: absolute;
+	left:0;
+	top:90px;
+	z-index: 1500;
+	color:#fff;
+}
+.box aside span{
+    width:20px;
+	height:14px;
+	background:url(../image/列表图标.png) 0 0 no-repeat;
+	position: absolute;
+	left:50px;
+	top:0;
+}
+.box aside ol{
+	width:155px;
+	float: left;
+}
+.box aside ol li{
+	width:155px;
+	height:25px;
+	line-height: 25px;
+	cursor: pointer;
+	font-family: "宋体";
+}
+.box aside ol li.con{
+	font-size: 16px;
+	text-indent: 0;
+	font-family: "微软雅黑";
+	padding: 10px 0;
+}
+.box aside ol li:hover{color:#fff;}
+.box aside .zuo{margin:5px 0 0 68px;}
+.box aside .you{margin-top: 7px;}
+.box aside img{margin:10px 0 0 13px;}
+.box nav ul .center{margin-top: 32px;}
+.box nav ul .center input{
+	width:240px;
+	height:30px;
+	border:1px solid #fff;
+	border-radius: 15px; 
+	color:#fff;
+	line-height: 32px;
+	background: rgba(0,0,0,0);
+	padding-left: 30px;
+    box-sizing:border-box;
+    /* background: url(../image/搜索图标.png)no-repeat 3px 3px;;
+    outline: none; */
+    }
+    .box nav ul .right{
+	margin-top: 32px;
+	width:280px;
+	height:32px;
+	margin-right:0;
+	font-family: "freshskin";
+	text-align: center;
+	line-height:32px;
+	font-size:16px;
+} 
+.box nav ul .right a{
+	display: inline-block;
+	width:32px;
+	height:32px;
+	color:#fff;
+	box-shadow: 0 0 0 1px #fff inset;
+	transition:box-shadow 0.3s ease 0s; 
+	border-radius: 16px; 
+	margin-left: 30px;
+}
+.box nav ul .right a:hover{
+	box-shadow: 0 0 0 16px #fff inset; 
+	color:skyblue;
+}
+.box .pic{
+	width:570px;
+	height:210px;
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	background: url(./image/wenzi.png) no-repeat;
+	text-align: center;
+}
+.box .pic p{
+	margin-top: 240px;
+	color:skyblue;
+}
+.box .pic ul li{
+	width:180px;
+	height:56px;
+	border-radius: 28px;
+	background: #fff;
+	text-align: left;
+}
+.box .pic ul .one{
+	line-height: 56px;
+	position: absolute;
+	left: -1920px;
+	top:40px;
+	opacity: 0;
+	transition:all 2s ease-in 0s;
+}
+.box .pic ul .two{
+	line-height: 56px;
+	position: absolute;
+	left: 1920px;
+	top:40px;
+	opacity: 0;
+	transition:all 2s ease-in 0s;
+}
+body:hover .box .pic ul .one{
+	position: absolute;
+	left:100px;
+	top:350px;
+    opacity:0.8;
+    
+}
+body:hover .box .pic ul .two{
+	position: absolute;
+	left:300px;
+	top:350px;
+	opacity:0.8;
+}
+.box .pic ul .one span,.videobox .pic ul span{
+	float: left;
+	width:40px;
+    height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 20px;
+	margin:8px 10px 0 10px;
+	box-shadow: 0 0 0 1px skyblue inset;
+	transition: 0.3s ease 0s;
+	font-family: "freshskin";
+	font-weight: bold;
+    color:skyblue;
+    
+    
+}
+.box .pic ul .two span,.videobox .pic ul span{
+	float: left;
+	width:40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 20px;
+	margin:8px 10px 0 10px;
+	box-shadow: 0 0 0 1px skyblue inset;
+	transition: 0.3s ease 0s;
+	font-family: "freshskin";
+	font-weight: bold;
+	color:skyblue;
+}
+
+.box .pic ul .two span{margin:8px 30px 0 10px;}
+.box .pic ul .one:hover span,.videobox .pic ul  span{
+	box-shadow: 0 0 0 20px skyblue inset;
+	color:#fff;
+} 
+.box .pic ul .two:hover span,.videobox .pic ul  span{
+	box-shadow: 0 0 0 20px skyblue inset;
+	color:#fff;
+} 
+.tub{
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+}
+
+/* 中间部分（前头) */
+ .new{
+	width:100%;
+	height:530px;
+	background: #fff;
+}
+.new header{
+	width:385px;
+	height: 95px;
+	background: #f7f7f7;
+	border-radius: 48px;
+	margin:70px auto 0;
+	box-sizing:border-box;
+	padding:2px 0 0 35px;
+}
+.new p{
+	margin-top: 10px;
+	text-align: center;
+	color: #db0067;
+}
+.new ul{
+	margin:70px auto 0;
+	width: 960px;
+}
+.new ul li{
+	width:266px;
+	height:250px;
+	border:1px solid #ccc; 
+	background:url(./image/纯色.jpg) 0 0 no-repeat;
+	float: left;
+	margin-right:8%;
+	margin-bottom: 40px;
+	position: relative;
+    overflow: hidden;
+}
+.new ul li:nth-child(2){
+    display: block;
+    background-size: 100%;
+    background-image: url(./image/纯色.jpg);}
+.new ul li:nth-child(3){
+    display: block;
+	margin-right: 0;
+	background-image: url(./image/纯色.jpg);
+background-position: center center;
+background-size: 100%;
+}
+.new ul li hgroup{
+	position: absolute;
+	left:0;
+	top:-250px;
+	width:266px;
+	height:250px;
+	background: rgba(0,0,0,0.5);
+	transition:all 0.5s ease-in 0s;
+}
+.new ul li:hover hgroup{
+	position: absolute;
+	left:0;
+	top:0;
+}
+.new ul li hgroup h2:nth-child(1){
+	font-size: 22px;
+	text-align: center;
+	color:#fff;
+	font-weight: normal;
+	margin-top: 58px;
+}
+.new ul li hgroup h2:nth-child(2){
+	font-size: 14px;
+	text-align: center;
+	color:#fff;
+	font-weight: normal;
+	margin-top: 15px;
+}
+.new ul li hgroup h2:nth-child(3){
+	width:26px;
+	height: 26px;
+	margin-left: 120px;
+	margin-top: 15px;
+	background:url(images/jiantou.png) 0 0 no-repeat;
+}
+.new ul li hgroup h2:nth-child(4){
+	width:75px;
+	height: 22px;
+	margin-left: 95px;
+	margin-top: 25px;
+	background:url(images/anniu.png) 0 0 no-repeat;
+}
+.text{
+	width:100%;
+	height:700px;
+	background: #fff;
+}
+.text header{
+	width:508px;
+	height: 95px;
+	background: #f7f7f7;
+	border-radius: 48px;
+	margin:220px auto 0;
+	box-sizing:border-box;
+	padding:7px 0 0 35px;
+}
+.text p{
+	margin-top: 10px;
+	text-align: center;
+	color: #db0067;
+}
+.text ul{
+	margin:70px auto 0;
+	width: 960px;
+}
+.text ul li{
+	width:195px;
+	height:195px;
+	border:1px solid #ccc;
+	border-radius: 50%;
+	float: left;
+	margin-right:5%;
+	margin-bottom: 40px;
+	position: relative;
+}
+.text ul li img{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.text ul li:nth-child(4),.text ul li:nth-child(8){
+	margin-right:0;
+}
+.text ul li .tihuan{
+	opacity: 0;
+	transition:all 0.4s ease-in 0.2s;	
+}
+.text ul li:hover .tihuan{
+	opacity: 1;
+	transform:translate(-50%,-50%) scale(0.75);	
+}
+.text ul li .tu{
+	transition:all 0.4s ease-in 0s;
+}
+.text ul li:hover .tu{
+	opacity: 0;
+	transform:translate(-50%,-50%) scale(0.5);
+} 
+
+/* 中间部分（后尾） */
+.try{
+	width:100%;
+	height:312px;
+	background: #0eabc7;
+	padding-top: 70px;
+}
+.try header{
+   display: block;
+	width:555px;
+	height: 95px;
+	background: #f7f7f7;
+	border-radius: 48px;
+	margin:0 auto;
+	box-sizing:border-box; 
+	/* padding:7px 0 0 35px; */
+ } 
+ .try header img{
+    display: block;
+    width:555px;
+	height: 95px;
+	background: #f7f7f7;
+	border-radius: 48px;
+	
+	
+}
+.try p{
+	margin-top: 10px;
+	text-align: center;
+	color: #fff;
+}
+.try ul{
+	margin:70px auto 0;
+    width: 960px;
+    list-style: none;
+}
+.try ul li{
+	width:291px;
+	height:251px;
+	float: left;
+	margin-right:4%;
+	margin-bottom: 40px;
+	position: relative;
+	-webkit-perspective:230px;	
+}
+.try ul li:last-child{
+	margin-right: 0;
+}
+.try ul li img{
+    display: block;
+    width: 291px;
+    height: 251px;
+	position: absolute;
+	left:0;
+	top:0;
+	-webkit-backface-visibility:hidden;
+	transition:all 0.5s ease-in 0s;
+}
+.try ul li img.fan{
+ 	-webkit-transform:rotateX(-180deg);
+ }
+.try ul li:hover img.fan{
+ 	-webkit-transform:rotateX(0deg);
+ }
+ .try ul li:hover img.zheng{
+ 	-webkit-transform:rotateX(180deg);
+ } 
+ .text{
+	width:100%;
+	height:700px;
+	background: #fff;
+}
+.text header{
+    display: block;
+	width:508px;
+	height: 95px;
+	background: #f7f7f7;
+	border-radius: 48px;
+	margin:220px auto 0;
+	box-sizing:border-box; 
+	/* padding:7px 0 0 35px; */
+ } 
+ .text header img{
+    display: block;
+	width:508px;
+    height: 95px;
+    border-radius: 48px;
+    
+}
+.text p{
+	margin-top: 10px;
+	text-align: center;
+	color: #db0067;
+}
+.text ul{
+	margin:70px auto 0;
+    width: 960px;
+    list-style: none;
+}
+.text ul li{
+	width:195px;
+	height:195px;
+	border:1px solid #ccc;
+	border-radius: 50%;
+	float: left;
+	margin-right:5%;
+	margin-bottom: 40px;
+	position: relative;
+}
+.text ul li img{
+    display: block;
+    height: 190px;
+    width: 190px;
+    border-radius: 100px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.text ul li:nth-child(4),.text ul li:nth-child(8){
+	margin-right:0;
+}
+.text ul li .tihuan{
+	opacity: 0;
+	transition:all 0.4s ease-in 0.2s;	
+}
+.text ul li:hover .tihuan{
+	opacity: 1;
+	transform:translate(-50%,-50%) scale(0.75);	
+}
+.text ul li .tu{
+	transition:all 0.4s ease-in 0s;
+}
+.text ul li:hover .tu{
+	opacity: 0;
+	transform:translate(-50%,-50%) scale(0.5);
+} 
+
+
+/* 尾巴 */
+ footer{
+	width:100%;
+	height:600px;
+	background: #22479e;
+	border-bottom: 1px solid #fff;
+}
+
+footer .logo{
+	width:1000px;
+	height:100px;
+	margin:0 auto;
+	background: url(but.jpg) no-repeat;
+	border-bottom: 1px solid #8c9299;
+}
+
+footer .message{
+	width:1000px;
+	margin:20px auto 0;
+	color:#fffada;
+}
+footer .message .left{
+	width:525px;
+	float: left;
+	padding-left: 30px;
+	box-sizing:border-box;
+}
+footer .message .left li{
+	float: left;
+	margin-right: 30px;
+}
+footer .message .left li input{
+	width:215px;
+	height:32px;
+	border-radius: 5px;
+	margin:10px 0 15px 0;
+	padding-left: 10px;
+	box-sizing:border-box;
+	border:none;
+}
+footer .message .left li:last-child input{
+	width:150px;
+	height:50px;
+	padding-left: 0;
+	border:none;
+	background: url(../image/but.jpg) no-repeat;
+	}
+footer .message .right{
+	float: left;
+}
+footer .message .right p{
+	margin-bottom: 10px;
+}
+footer .message .right textarea{
+	width:400px;
+	height:250px;
+	padding:10px;
+	box-sizing:border-box;
+	resize:none;
+}
+.banquan{
+	width:100%;
+	height:60px;
+	background: #343a94;
+	text-align: center;
+}
+.banquan a{line-height: 80px;} 
+
+    </style>
+</head>
+<body>
+    <!-- 网页头部 -->
+    <div class="box">
+        <header>
+            <div class="con">
+              <section class="left"></section>
+              <section class="con">
+                   <a href="#">登陆</a>
+                   <a href="#">注册</a>
+              </section>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li class="left">
+                <a class="one" href="#">
+                    <img src="./image/选项图标.png" alt="">
+                    <span>选项</span>
+                    <img src="./image/下拉图标.png" alt="">
+                </a>
+                <aside>
+                    <span></span>
+                    <ol class="zuo">
+                        <li class="con">BiLiBiLi</li>
+                        <li>YSL</li>
+                        <li>Dior</li>
+                        <li>Hermes</li>
+                        <li>Versace</li>
+                        <li class="con">DM</li>
+                        <li>L'OREAL</li>
+                        <li>MAC</li>
+                        <li>Hermes</li>
+                    </ol>
+                    <ol class="you">
+                    <li class="con">H'Ju</li>
+                    <li>Hermes</li>
+                    <li>Versace</li>
+                    <li>Versace</li>
+                    <li class="con">热门搜索</li>
+                    <li>MAC</li>
+                    <li>Versace</li>
+                    <li>Versace</li>
+                    </ol>
+                    <img src="./image/气垫广告.jpg" alt="">
+                </aside>
+                </li>
+                <li class="center">
+                   <form >
+                       <input type="text" value="搜索商品、品牌">
+                 </form>
+                </li>
+                <li class="right">
+                 <a href="#"><img class="tub" src="./image/KTV.png" alt=""></a>
+                 <a href="#"><img class="tub" src="./image/去过.png" alt=""></a>
+                 <a href="#"><img class="tub" src="./image/sj.png"alt=""></a>
+                 <a href="#"><img class="tub" src="./image/钱.png" alt=""></a>
+                </li>
+            </ul>
+        </nav>
+        <video src="./video/home_loop_720p.mp4" autoplay="ture" loop="ture"></video>
+        <audio src="./audio/home.ogg" autoplay="ture" loop="ture"></audio>
+        <div class="pic">
+         <p>Take the story to heart</p>
+         <ul>
+             <li class="one">
+              <span><img class="tub" src="./image/KTV.png" alt=""></span>
+              Get into
+             </li>
+             <li class="two">
+              <span><img class="tub" src="./image/KTV.png" alt=""></span>
+              Sign out
+             </li>
+         </ul>
+        </div>
+    </div>
+
+    <!-- 中间部分（前头） -->
+     <div class="new">
+            <header>
+                <img src="./image/new.jpg" alt="">
+            </header>
+            <p>aaaa bbbb cccc dddd</p>
+            <ul>
+                <li>
+                    <hgroup>
+                        <h2>雅诗兰黛</h2>
+                        <h2>补水保湿</h2>
+                        <h2></h2>
+                        <h2></h2>
+                    </hgroup>
+                </li>
+                <li>
+                    <hgroup>
+                        <h2>兰蔻</h2>
+                        <h2>紧致活肤水</h2>
+                        <h2></h2>
+                        <h2></h2>
+                    </hgroup>
+                </li>
+                <li>
+                    <hgroup>
+                        <h2>欧莱雅</h2>
+                        <h2>爽肤水领导者</h2>>
+                        <h2></h2>
+                        <h2></h2>
+                    </hgroup>
+                </li>
+            </ul>
+        </div> 
+
+        <!-- 中间部分（后尾） -->
+         <div class="try">
+                <header>
+                    <img src="http://tnews.aipai.com/uploads/allimg/c161020/14L92Z0Q34P-125417.jpg" alt="">
+                </header>
+                <p>肥宅快乐水 </p>
+                <ul>
+                    <li>
+                        <img class="zheng" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=508346722,3235150240&fm=26&gp=0.jpg" alt="">
+                        <img class="fan" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=403641446,2428900182&fm=27&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="zheng" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=508346722,3235150240&fm=26&gp=0.jpg" alt="">
+                        <img class="fan" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=403641446,2428900182&fm=27&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="zheng" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=508346722,3235150240&fm=26&gp=0.jpg" alt="">
+                        <img class="fan" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=403641446,2428900182&fm=27&gp=0.jpg" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div class="text">
+                <header>
+                    <img src="http://tnews.aipai.com/uploads/allimg/c161020/14L92Z0Q34P-125417.jpg" alt="">
+                </header>
+                <p>评测 我们更专业 用户更放心</p>
+                <ul>
+                    <li>
+                        <img  class="tu" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=508346722,3235150240&fm=26&gp=0.jpg" alt="">
+                        <img class="tihuan" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2567628678,355740119&fm=26&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="tu" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=508346722,3235150240&fm=26&gp=0.jpg" alt="">
+                        <img class="tihuan" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2567628678,355740119&fm=26&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="tu" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1511486602,62625296&fm=26&gp=0.jpg" alt="">
+                        <img class="tihuan" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2567628678,355740119&fm=26&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="tu" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3380180753,2830563404&fm=26&gp=0.jpg" alt="">
+                        <img class="tihuan" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2567628678,355740119&fm=26&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="tu" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2652661141,4251769710&fm=26&gp=0.jpg" alt="">
+                        <img class="tihuan" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2567628678,355740119&fm=26&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="tu" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3256074070,1500204462&fm=26&gp=0.jpg" alt="">
+                        <img class="tihuan" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2567628678,355740119&fm=26&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="tu" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1488155091,2273765136&fm=26&gp=0.jpg" alt="">
+                        <img class="tihuan" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2567628678,355740119&fm=26&gp=0.jpg" alt="">
+                    </li>
+                    <li>
+                        <img class="tu" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1547115071,1599319058&fm=26&gp=0.jpg" alt="">
+                        <img class="tihuan" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2567628678,355740119&fm=26&gp=0.jpg" alt="">
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 尾巴 -->
+             <footer>
+                    <div class="logo"></div>
+                    <div class="message">
+                        <form>
+                            <ul class="left">
+                                    <p><label for="">姓名：</label></p>
+                                    <input type="tel" pattern="^\d{11}$" title="请输入您的名字">
+                                    <p>邮箱：</p>
+                                    <input type="tel" pattern="^\d{11}$" title="请输入邮箱">
+                                    <p>电话：</p>
+                                    <input type="tel" pattern="^\d{11}$" title="请输入11位数字">
+                                    <p>密码：</p>
+                                    <input type="tel" pattern="^\d{11}$" title="请输入您的密码">
+                                    <input class="but" type="submit" value="登陆"> 					
+                            </ul>
+                            <div class="right">
+                                <p>留言：</p>
+                                <textarea></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </footer> 
+</body>
+</html>
