@@ -102,3 +102,25 @@ ul{
     font-weight: bold;
     overflow: hidden;
 }
+#images{
+    /* 父亲相对定位 */
+    position: relative;
+}
+
+#images>a{
+    /* 淡入淡去效果 */
+    transition: opacity 1s linear;
+    display: block;
+    /* 使图片堆叠 */
+    position: absolute;/*子绝*/
+    top: 0%;
+    left: 0;
+}
+.displayImg{
+    /* display: block; */
+    opacity: 1;
+}
+.hiddenImg{
+    /* display: none; */
+ opacity: 0;
+}
