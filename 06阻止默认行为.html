@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>阻止默认行为</title>
+  <style>
+    div {
+        margin-bottom: 10px;
+      }
+    </style>
+</head>
+
+<body>
+  <form action="http://www.baidu.com">
+    <div>
+      <label for="userName">用户名: </label>
+      <input id="userName" type="text">
+      <span id="userNameError" style="display:none;">用户名不达标</span>
+    </div>
+    <div>
+      <label for="psw">密码 </label>
+      <input id="psw" type="text">
+      <span id="pswError" style="display:none;">密码不达标</span>
+    </div>
+    <div>
+      <input id="submit" type="submit">
+    </div>
+  </form>
+  <p></p>
+  <script>
+    //初始化获取元素
+    // 获取CSS选择器的一个form元素
+    var form = document.querySelector('form');
+    // 通过ID来获取userName
+    var userName = document.getElementById('userName');
+    var psw = document.getElementById('psw');
+
+    var para = document.querySelector('psw');
+    var userError = document.querySelector('#userNameError');
+    var pswError = document.querySelector('#pswError');
+ console.log(userError);
+ console.log(pswError);
+
+    var flagUserName = true;//表示userName的值不合格（提交因子之一）
+    var flagPsw = true;//表示pws的值不合格（提交因子之二）
+
+    //用户名框获得焦点
+    userName.focus();
+
+
+
+    form.onsubmit = function (e) {
+      // if(userName.value === '' || psw.value === '') {
+
+      //   //阻止默认行为
+      //   e.preventDefault();
+      //   para.textContent = '用户名/密码不能为空'
+
+      // }
+      //获取用户名框的值，并求出长度，根据长度判断是否显示提示及提交因子状态
+      // var namelength=userName.value.length
+      if (userName.value.length > 4 && userName.value.length < 10) {
+        //用户名达标
+        flagUserName = false;
+        userNameError.style.display = "none";
+      }
+      else {
+        //用户名不达标
+        userNameError.style.display = "inline";
+        flagUserName = true;
+      }
+
+      //获取用户密码，并判断
+      if (psw.value.length > 1) {
+        //达标
+        flagPsw = false;
+        pswError.style.display = "none";
+      }
+      else {
+        //不达标
+        flagPsw = true;
+        pswError.style.display = "inline";
+        
+      }
+
+      if (flagUserName || flagPsw) {
+        //用户名与密码二者有一项不达标都不能提交（阻止默认动作）
+        // console.log(flagUserName||flagPsw)
+        e.preventDefault();
+      }
+    }
+
+  </script>
+</body>
+
+</html>
