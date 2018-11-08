@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+         
+              var Upweibo=document.getElementById("Uplog");
+              var Txtweibo=document.getElementById("txt");
+              var Ulweibo=document.createElement("ul");
+
+              Upweibo.parentNode.appendChild(Ulweibo);
+
+              Upweibo.onclick=function(){
+                  var Liweibo=document.createElement("li");
+
+                  if(Txtweibo.value==""){
+                      window.alert("内容不能为空！");
+                      return false;
+                  }
+                Liweibo.textContent=Txtweibo.value;
+                
+                var Aweibo=document.createElement("a");
+                 Aweibo.href="#";
+                 Aweibo.innerHTML="删除";
+                  Aweibo.onclick=function(){
+                      Ulweibo.removeChild();
+                  }
+                  Liweibo.appendChild(Aweibo);
+
+
+              }
+         
+        
+    </script>
+</head>
+<body>
+    <div class="box">
+        微博发布：
+        <textarea name="" id="txt" cols="30" rows="10"></textarea>
+         <button id="Uplog">发布</button>
+    </div>
+</body>
+</html>
