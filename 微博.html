@@ -11,7 +11,8 @@
               var Txtweibo=document.getElementById("txt");
               var Ulweibo=document.createElement("ul");
 
-              Upweibo.parentNode.appendChild(Ulweibo);
+            
+            Upweibo.parentNode.appendChild(Ulweibo);
 
               Upweibo.onclick=function(){
                   var Liweibo=document.createElement("li");
@@ -26,12 +27,17 @@
                  Aweibo.href="#";
                  Aweibo.innerHTML="删除";
                   Aweibo.onclick=function(){
-                      Ulweibo.removeChild();
+                      Ulweibo.removeChild(e.target.parentNode);
                   }
                   Liweibo.appendChild(Aweibo);
+                  if(Ulweibo.hasChildNodes())
+                     Ulweibo.insertBefore(Liweibo,Ulweibo.firstChild);
+              else  Ulweibo.appendChild(Liweibo); 
 
+              Txtweibo.value="";
+            }
 
-              }
+              
          
         
     </script>
