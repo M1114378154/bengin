@@ -137,4 +137,16 @@
   addtoCart(order);//调用假日购物车函数
   console.log(myCart);
 
+  var x = 10;
+  var y = 3;
+
+  localStorage.setItem('kx', x);
+  var xfromS = localStorage.getItem('kx');
+  console.log(xfromS * y);
+  console.log(xfromS + y);
+
+  localStorage.setItem('p01', JSON.stringify(product1));
+  var pfromS = JSON.parse(localStorage.getItem('p01'));
+  console.log(pfromS);
+
 </script>
