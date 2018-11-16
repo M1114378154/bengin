@@ -1,38 +1,4 @@
 <script>
-  function Person(name, age) {
-    this.name = name;                // 添加name属性
-    this.age = age;                  // 添加age属性
-    this.sayHello = function () {    // 添加sayHello()方法
-      console.log('你好，我是' + this.name);
-    };
-  }
-  var p1 = new Person('张三', 18);
-  var p2 = new Person('李四', 19);
-  console.log(p1);                  // 输出结果：Person {name: "张三", age: 18}
-  console.log(p2);                  // 输出结果：Person {name: "李四", age: 19}
-  p1.sayHello();                    // 输出结果：你好，我是 张三
-  console.log(p1.constructor);      // 输出结果：function Person(name, age) ……
-
-
-
-  // 定义类---ES6新增
-  class Student {
-    //仅属性使用构造函数
-    constructor(name, age, gender) {    // 构造方法
-      this.name = name;                  // 添加name属性
-      this.age = age;                    // 添加age属性
-      this.gender = gender;              // 添加gender属性
-    }
-    //函数独立列出，不用function关键字
-    introduce() {                        // 定义introduce()方法
-      console.log('我是' + this.name + '，今年' + this.age + '岁。');
-    }
-  }
-  // 实例化时会自动调用constructor()构造方法
-  var st = new Student('王五', 19, '男');
-  st.introduce();    // 输出结果：我是王五，今年19岁。
-
-
 
   class Shopping {
     constructor(Sname, price, number) {
@@ -58,41 +24,44 @@
       this.Sname = Sname;
       this.imgSRC = imgSRC;
       this.price = price;
-
-
     }
   }
-  // 商品对象/实例
-  var product1 = new Product('01', '哇哈哈', 'images/2.png', 5.00);
-  var product2 = new Product('02', '哇哈哈', 'images/2.png');
+
   // 访问商品对象
-  console.log(product1)
-  // .形式访问商品对象的属性
-  console.log(product1.id);
-  // 下标形式访问商品对象
-  console.log(product1['id']);
+  // console.log(product1)
+  // // .形式访问商品对象的属性
+  // console.log(product1.id);
+  // // 下标形式访问商品对象
+  // console.log(product1['id']);
 
 
   // 订单类
   class Order {
     constructor(product, qty) {
       // 订单类成员
-      this.product = product;
+      // this.product = product;
+      // this.qty = qty;
+      this.id = product.id;
+      this.Sname = product.Sname;
+      this.price = product.price;
+      this.imgSRC = product.imgSRC;
       this.qty = qty;
     }
   }
   // // 创建订单对象
   // var order = new Order(product1, 5);
-  // // 获得订单对象
+  // 获得订单对象
   // console.log(order);
-  // //  获得订单对象的product属性
+  //  获得订单对象的product属性
   // console.log(order.product);
   // // 获得订单对象的product属性的二级属性name/price
   // console.log(order.product.Sname);
   // console.log(order.product.price);
 
 
-  // //第二个订单
+
+
+  //第二个订单
   // var order2 = new Order(product2, 10);
   // console.log(order2);
   // console.log(order2.product);
@@ -100,25 +69,72 @@
   // console.log(order2.product.price);
 
 
-  var order3=new Order();
-  order3.push(product1);
-  console.log(order3[0].Sname);
- 
-  console.log(order3);
-  var array=[new Order('01', '哇哈哈', 'images/2.png', 5),new Order('02', '哇哈哈', 'images/2.png')];
-  console.log(array[1].Sname);
-  console.log(array);
+  // var order3=new Order();
+  // order3.push(product);
+  // console.log(order3[0].Sname);
 
-  class Cartdata{
-// 数据成员 订单列表 总样本 总件数 总金额
-constructor(){
-  this.order3=new Array();
-  this.units=0;
-  this.totalQty=0;
-  this.totalAmount=0;
-}
+  // console.log(order3);
+  // var array=[new Order('01', '哇哈哈', 'images/2.png', 5),new Order('02', '信息', 'images/2.png',10)];
+  // console.log(array[1].Sname);
+  // console.log(array);
+
+
+  // 购物车数据类---确定格式
+  class Cartdata {
+    // 数据成员 订单列表 总样本 总件数 总金额
+    constructor() {
+      this.orderList = new Array();
+      this.units = 0;//总样本
+      this.totalQty = 0;//总件数
+      this.totalAmount = 0;//总金额
+    }
   }
 
-  var ct=new Cartdata();
-  console.log(ct);
+  // 函数定义--将某个订单order，加入购物车
+  function addtoCart(order) {
+    // 订单2进购物车进myCart
+
+    var isNewProduct = false;//假设isOldProduct是假，代表当前状态是新商品
+    for (const i in myCart.orderList) {//遍历数组
+      if (order.id == myCart.orderList[i].id) {
+        isNewProduct = true;//新近订单的ID与购物车中某个商品的id相等，是购物车中已经存在的商品，修改状态
+        // 新增对应qty
+        myCart.orderList[i].qty += order.qty;
+        break;
+      }
+    }
+    if (!isNewProduct) {
+      //  order是购物车中的新商品，给样本数++
+      myCart.orderList.push(order);
+      myCart.units++;
+    }
+    myCart.totalQty += order.qty;
+    myCart.totalAmount = order.price * order.qty;
+
+  }
+
+  // 商品对象/实例
+  var product1 = new Product('01', '娃哈哈', 'images/2.png', 5.00);
+  var product2 = new Product('02', '信息', 'images/2.png', 10);
+
+
+  // 实例化购物车数据---订单1进购物车myCart
+  var myCart = new Cartdata();
+
+  var order = new Order(product1, 5);
+  addtoCart(order);//调用假日购物车函数
+  // myCart.orderList.push(order);
+  // myCart.units = 1;
+  // myCart.totalQty = order.qty;
+  // myCart.totalAmount = order.price * order.qty;
+  // console.log(myCart);
+
+  order = new Order(product2, 3);
+  addtoCart(order);//调用假日购物车函数
+  console.log(myCart);
+
+  order = new Order(product2, 1);
+  addtoCart(order);//调用假日购物车函数
+  console.log(myCart);
+
 </script>
