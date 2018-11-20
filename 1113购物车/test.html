@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./js/main.js"></script>
+    <script>
+        // 商品
+        var product1 = new Product('01', '鼠标', '../image/KTV.png', 5.00);
+        // 订单
+        var order=new Order(product1,2,true);
+    //  购物车数据
+        var cartdata=new Cartdata();
+        // 将订单加入购物车
+      cartdata.orderList.push(order);
+      cartdata.totalQty=order.qty;
+      cartdata.totalAmount=order.qty*order.price;
+      cartdata.units = 1;
+console.log(cartdata);
+      
+// 创建购物车操作类对象        
+var cart=new ShoppingCart();
+// 将购物车数据写入本地存储
+         cart.setDataToLocalStorage(cartdata);
+        // 将购物车数据读出来显示到控制台
+         console.log(cart.getDataFromLocalStorage());
+        </script>
+</body>
+</html>
