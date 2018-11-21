@@ -1,4 +1,4 @@
-localStorage.setItem("key","value");//存储变量名为key，值为value的变量 
+localStorage.setItem("key", "value");//存储变量名为key，值为value的变量 
 localStorage.getItem("key");//获取存储的变量key的值
 localStorage.removeItem("key")//删除变量名为key的存储变量
 
@@ -52,7 +52,7 @@ class Product {
     }
 }
 
-var product1 = new Product('01', '鼠标', '../image/KTV.png', 5.00);
+// var product1 = new Product('01', '鼠标', '../image/KTV.png', 5.00);
 
 // 订单类成员
 class Order {
@@ -66,8 +66,8 @@ class Order {
         this.selectStatus = selectStatus;
     }
 }
-var order = new Order(product1, 2, true);
-var Sname = order.Sname;
+// var order = new Order(product, 2, true);
+// var Sname = order.Sname;
 
 // 购物车数据类---确定格式
 class Cartdata {
@@ -92,58 +92,107 @@ class ShoppingCart {
     }
     //   从本地存储中获取购物车数据
     getDataFromLocalStorage() {
-        
-        let test=localStorage.getItem('test');
-        if(test==null||test ==''){
+
+        let test = localStorage.getItem('test');
+        // 判断购物车是否为空
+        if (test == null || test == '') {
             return new Cartdata();
         }
-        else{
+        else {
             return JSON.parse(test);
         }
     }
     //  获取选中对象的订单列表
     getSelectedList() {
-      
+
     }
+
     // 获取选中对象列表的总数量
+    // 1、获取购物车数据：解决如何获取，存放变量
+    // 2、获取订单列表
+    // 3、遍历订单列表（逐一判断每个订单的选中状态）
+    // （1）选中的，累加订单数量
+    // （2）未选中，就不统计该订单数量
+    // 4、返回选中状态的总数量
     getSelectedQty() {
-
+        let selectQty = 0;
+        let cartdata = this.getDataFromLocalStorage();
+        for (let i = 0; i < cartdata.orderList.length; i++) {
+            if (cartdata.orderList[i].selectStatus) {
+                selectQty += cartdata.orderList[i].qty;
+            }
+        }
+        return selectQty;
     }
+
     // 获取选中对象列表的总价格
+    // 1、获取购物车数据：解决如何获取，存放变量
+    // 2、获取订单列表
+    // 3、遍历订单列表（逐一判断每个订单的选中状态）
+    // （1）选中的，累加（订单数量*订单价格）
+    // （2）未选中，就不统计
+    // 4、返回选中状态的总价格
     getSelectedAmount() {
-
+        let selectAmount=0;
+        let cartdata = this.getDataFromLocalStorage();
+        let orderList=cartdata.orderList;
+     for(let i in orderList){
+         
+         if(orderList[i].selectStatus){
+             selectAmount+=cartdata.orderList[i].price*cartdata.orderList[i].qty;
+         }
+     }
+      return selectAmount;
     }
+
     // 设置购物车订单项选中状态
+    // 1、获取购物车数据：解决如何获取，存放变量
+    // 2、获取订单列表
+    // 3、遍历订单列表，逐一判断每个订单的id是否等于指定id（形式参数）
+    // (1) 找到对应id，设置选择状态selectStatus（形式参数） 结束循环
+    // (2）没找到，继续遍历直到订单列表遍历完成
     setItemSelectStatus(id, selectStatus) {
 
     }
 
-    addToCart(order){
-        myCart=this.getDataFromLocalStorage(); 
-            // 订单2进购物车进myCart
-        
-            var isNewProduct = false;//假设isOldProduct是假，代表当前状态是新商品
-            for (const i in myCart.orderList) {//遍历数组
-              if (order.id == myCart.orderList[i].id) {
+    //将订单写入购物车(写入LocalStorage)
+    addToCart(order) {
+
+        cartdata = this.getDataFromLocalStorage();
+        // 订单2进购物车进cartdata
+        var isNewProduct = false;//假设isOldProduct是假，代表当前状态是新商品
+        //遍历订单列表。判断新加入商品是否在购物车中
+        for (const i in cartdata.orderList) {
+            if (order.id == cartdata.orderList[i].id) {
                 isNewProduct = true;//新近订单的ID与购物车中某个商品的id相等，是购物车中已经存在的商品，修改状态
                 // 新增对应qty
-                myCart.orderList[i].qty += order.qty;
+                cartdata.orderList[i].qty += order.qty;
                 break;
-              }
             }
-            if (!isNewProduct) {
-              //  order是购物车中的新商品，给样本数++
-              myCart.orderList.push(order);
-              myCart.units++;
-            }
-            myCart.totalQty += order.qty;
-            myCart.totalAmount = order.price * order.qty;
-        
-          }
-        
+        }
+        if (!isNewProduct) {
+            //  order是购物车中的新商品，给样本数++
+            cartdata.orderList.push(order);
+            cartdata.units++;
+        }
+        // 总计数据
+        cartdata.totalQty += order.qty;
+        cartdata.totalAmount = order.price * order.qty;
+        // 将新购物车数据写入本地存储
+        this.setDataToLocalStorage(cartdata);
+    }
 
-    
-    clearCart(){
+    //清除购物车（移除本地存储购物车项）
+    clearCart() {
+        localStorage.removeItem('test');
+    }
+
+    find(id) {
+
+    }
+
+    //删除指定ID商品
+    deleteItem(id) {
 
     }
 
