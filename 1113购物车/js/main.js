@@ -133,16 +133,16 @@ class ShoppingCart {
     // （2）未选中，就不统计
     // 4、返回选中状态的总价格
     getSelectedAmount() {
-        let selectAmount=0;
+        let selectAmount = 0;
         let cartdata = this.getDataFromLocalStorage();
-        let orderList=cartdata.orderList;
-     for(let i in orderList){
-         
-         if(orderList[i].selectStatus){
-             selectAmount+=cartdata.orderList[i].price*cartdata.orderList[i].qty;
-         }
-     }
-      return selectAmount;
+        let orderList = cartdata.orderList;
+        for (let i in orderList) {
+
+            if (orderList[i].selectStatus) {
+                selectAmount += cartdata.orderList[i].price * cartdata.orderList[i].qty;
+            }
+        }
+        return selectAmount;
     }
 
     // 设置购物车订单项选中状态
@@ -152,7 +152,47 @@ class ShoppingCart {
     // (1) 找到对应id，设置选择状态selectStatus（形式参数） 结束循环
     // (2）没找到，继续遍历直到订单列表遍历完成
     setItemSelectStatus(id, selectStatus) {
+        //获取购物车数据
+        let cartdata = this.getDataFromLocalStorage();
+        let orderList = cartdata.orderList;
+        //   查找Id对应的订单
+        let order= this.find(id,orderList);
+        //   判断位置，位置为空报错提示，如果不为空就设置状态
+        if (order == null) {
+            //   没有找到id
+            console.log('订单ID有误');
+            return;
+        }
+        else {
+            //   找到对应id
+            order.selectStatus = selectStatus;
+        }
+        //   写入本地存储
+        this.setDataToLocalStorage(cartdata);
+    }
 
+    //     var cartdata = this.getDataFromLocalStorage();
+    //     let orderList = cartdata.orderList;
+    //     let isNewProduct = false;
+    //     for (const i in orderList) {
+    //         if (id == orderList[i].id) {
+    //             orderList[i].selectStatus = selectStatus;
+    //             isNewProduct = true;
+    //         }
+    //     }
+    //     if ( isNewProduct) this.setDataToLocalStorage(cartdata);
+    // }
+
+
+    //查找指定id的订单
+    find(id,orderList) {
+       
+        for (const i in orderList) {
+            if (id == orderList[i].id) {
+               return orderList[i];
+            }
+        }
+        return null;
     }
 
     //将订单写入购物车(写入LocalStorage)
@@ -187,13 +227,41 @@ class ShoppingCart {
         localStorage.removeItem('test');
     }
 
-    find(id) {
-
-    }
-
     //删除指定ID商品
-    deleteItem(id) {
+// （1）获取购物车数据
+// （2）获取订单列表
+// （4）遍历订单列表，逐一判断每个订单的id是否等于指定id（形式参数）
+//     a)找到对应id, 则删除所选id，修改总样本数、总价格、总件数 
+//     b)没找到，继续遍历直到订单列表遍历完成，提示没有指定id.
+// （5）如果删除成功，数据写入本地存储
 
+     deleteItem(id) {
+        //  获取购物车数据
+        let cartdata = this.getDataFromLocalStorage();
+        // 获取订单列表
+        let orderList = cartdata.orderList;
+        //   查找指定ID的订单（要删除的订单）
+        let order= this.find(id,orderList);
+        // 定位要删除的订单在数组中的位置
+        let index=orderList.indexOf(order,0);
+
+        if (index == -1) {
+            //   没有找到id
+            console.log('订单ID有误');
+          
+        }
+        else{
+            // 删除当前订单
+            orderList.splice(index,1);
+            // 变更总商品总件数
+         cartdata.totalQty-=order.qty;
+        //  变更商品总价格
+         cartdata.totalAmount-=order.qty*order.price;
+        //  变更总商品件数
+        cartdata.units--;
+        // 数据回写购物车
+        this.setDataToLocalStorage(cartdata);
+        }
     }
 
 }
