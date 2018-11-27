@@ -102,10 +102,7 @@ class ShoppingCart {
             return JSON.parse(test);
         }
     }
-    //  获取选中对象的订单列表
-    getSelectedList() {
 
-    }
 
     // 获取选中对象列表的总数量
     // 1、获取购物车数据：解决如何获取，存放变量
@@ -263,5 +260,7 @@ class ShoppingCart {
         this.setDataToLocalStorage(cartdata);
         }
     }
+     
+  
 
 }

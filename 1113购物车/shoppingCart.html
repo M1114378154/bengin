@@ -51,12 +51,13 @@
       <div class="col-1">操作</div>
     </div>
     <div id="cartContent">
-      <div class="row p-3 mt-1 bg-light">
+      <!-- 为样本节点设计id -->
+      <div class="row p-3 mt-1 bg-light" id="orderEX">
         <div class="col-2"><input type="checkbox"></div>
         <div class="col-5">
           <a href=""><img src="https://img10.360buyimg.com/cms/s80x80_jfs/t20377/193/2248245809/177543/8cfd500f/5b4c450eNd068fe55.jpg" alt="" width="100px" height="100px"></a><span>屈臣氏（Watsons）苏打汽水330ml</span>
         </div>
-        <div class="col-1 text-right ">¥<span name="price">790.00</span></div>
+        <div class="col-1 text-right ">¥<span name="price">0.00</span></div>
         <div class="col-2">
           <div class="btn-group">
             <button type="button" class="btn btn-sm btn-outline-danger" name='increase'>+</button>
@@ -65,7 +66,8 @@
           </div>
         </div>
         <div class="col-1">¥<span name="subTotal">0.00</span></div>
-        <div class="col-1"><button class="btn btn-light" name='deleteItem'>删除</button></div>
+      <!-- 为所有涉及到的操作节点将来需要在该节点加载时间，设计自定义属性；data-operator='操作名' -->
+        <div class="col-1"><button class="btn btn-light" data-operator='deleteltem' name='deleteItem'>删除</button></div>
       </div>
     </div>
     <div class="row mt-3 border p-3">
@@ -98,7 +100,7 @@
       </div>
     </div>
   
-
+    
 
 
   <!-- Optional JavaScript -->

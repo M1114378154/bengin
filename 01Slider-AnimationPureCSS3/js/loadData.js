@@ -1,5 +1,5 @@
 
-
+// json格式
 var sliderData = {
     "imageList": [
         { "itemId": "first", "itemClassName": "firstanimation", "aHref": "#", "imgSrc": "images/img_1.jpg", "imgAlt": "美洲狮", "h1Content": "美洲狮" },
@@ -21,6 +21,7 @@ var ulObject=document.querySelector('#mask>ul');//大于号是子元素
 console.log(ulObject);
 var str='';
 for (i in sliderData.imageList){
+    // 字符串链接（变量str加赋值变量）
     str+='<li id="'+sliderData.imageList[i].itemId+'" class="'+sliderData.imageList[i].itemClassName+'">'+
                    '<a href="'+sliderData.imageList[i].aHref+'">'+
                    '<img src="'+sliderData.imageList[i].imgSrc+'" alt="'+sliderData.imageList[i].imgAlt+'">'+

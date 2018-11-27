@@ -26,8 +26,10 @@ for (var i = 0; i < galleryInfo.imageList.length; i++) {
 	var nodeImg = document.createElement("img");
 	nodeImg.className = "pic opacity0";
 	nodeImg.src = galleryInfo.imgPath + galleryInfo.imageList[i].src;
+	// 创建a标签的节点
 	var nodeA = document.createElement("a");
 	nodeA.href = galleryInfo.imageList[i].href;
+	// appendChild() 方法可向节点的子节点列表的末尾添加新的子节点
 	nodeA.appendChild(nodeImg);
 	var nodeLiImg = document.createElement("li");
 	// nodeLiImg.style.display="none";
