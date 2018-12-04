@@ -100,13 +100,13 @@ function displaySelectedTotal() {
 function regEvent() {
     // 获取清空购物车节点
     let clearAll = document.querySelector('[data-operator="clearAll"]');
-    console.log(clearAll);
+    // console.log(clearAll);
     // 注册单击事件触发函数
     clearAll.onclick = clearAllEventFun;
 
     // 注册删除操作的单击事件
-  clearAll=cartRoot.querySelectorAll(operatorNameJson.deleteItem);
-//   console.log(clearAll);
+  clearAll=document.querySelectorAll('[data-operator="deleteltem"]');
+  console.log(clearAll);
 
 for(const i in clearAll){
     clearAll[i].onclick=deleteItemEventFun;
@@ -117,13 +117,13 @@ for(const i in clearAll){
 function clearAllEventFun() {
     cart.clearCart();
     // 获取订单根节点
-    let cartListNode = document.querySelector('#cartContent');
+    // let cartListNode = document.querySelector('#cartContent');
     //保留样本节点
-    let ExampleNode = (document.querySelector('#orderExample')).cloneNode(true);
+    let exampleNode = (document.querySelector('#orderExample')).cloneNode(true);
     //清除订单根节点的所有元素
     cartListNode.innerHTML = "";
     //将样本节点挂接回列表根节点
-    cartListNode.appendChild(ExampleNode);
+    cartListNode.appendChild(exampleNode);
     // 更新商品总数据
     displaySelectedTotal();
 }
@@ -132,11 +132,11 @@ function clearAllEventFun() {
 function deleteItemEventFun(e) {
     console.log(e);
 
-   // 获取订单根节点
+  
     //获取获取当前被单击的删除按钮
     let currentBtn=e.target;
     //获取单击按钮的父节点的父节点
-    let node=currentBtn.paremyNode.paremyNode;
+    let node=currentBtn.parentNode.parentNode;
     //删除父节点的id 
     cart.deleteItem(node.id);
     //移除订单根节点的父节点
