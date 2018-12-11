@@ -67,12 +67,43 @@ function displayOrderList() {
         subPriceNew.textContent = (order.price * order.qty).toFixed(2);
 
         //获取数量
-        let qtyNew = orderNew.querySelector('[ data-operator="qty"]');
+        let qtyNew = orderNew.querySelector('[data-name="qty"]');
         qtyNew.textContent = order.qty;
 
         // 为删除按钮设计一个data-id属性
     //    element=node.querySelector(operatorNameJson.deleteItem);
     //     element.setAttribute('data-id',order.id);
+
+        // 为加号按钮注册单击事件
+        let increaseBtns = document.querySelectorAll('[data-operator="increase"]');
+        console.log(increaseBtns);
+        for (const key in increaseBtns) {
+            increaseBtns[key].onclick = changeQtyEventFun;
+        }
+    
+        // 为减号按钮注册单击事件
+        let decreaseBtns = document.querySelectorAll('[data-operator="decrease"]');
+        console.log(decreaseBtns);
+        for (const key in decreaseBtns) {
+            decreaseBtns[key].onclick = changeQtyEventFun;
+        }
+
+        
+    // 获取所有+号节点
+    // element = cartRoot.querySelectorAll(operatorNameJson.increase);
+    //  console.log(element);
+    // // 为每个+号节点注册单机事件,事件触发函数
+    // for (const i in element) {
+    //     element[i].onclick = changeQtyEventFun;
+    // }
+    // // 获取所有-号节点
+    // element = cartRoot.querySelectorAll(operatorNameJson.decrease);
+    //  console.log(element);
+    // // 为每个-号节点注册单机事件,事件触发函数
+    // for (const i in element) {
+    //     element[i].onclick =  changeQtyEventFun;
+    // }
+
 
     }
 }
@@ -89,7 +120,7 @@ function displaySelectedTotal() {
 
 
     totalNode = document.querySelector(dataNameJson.selectedQty);
-    console.log(dataNameJson.selectedQty);
+    // console.log(dataNameJson.selectedQty);
     totalNode.textContent = cart.getSelectedQty();
 
     totalNode = document.querySelector(dataNameJson.selectedAmount);
@@ -106,7 +137,7 @@ function regEvent() {
 
     // 注册删除操作的单击事件
   clearAll=document.querySelectorAll('[data-operator="deleteltem"]');
-  console.log(clearAll);
+//   console.log(clearAll);
 
 for(const i in clearAll){
     clearAll[i].onclick=deleteItemEventFun;
@@ -130,7 +161,7 @@ function clearAllEventFun() {
 
 //删除事件触发函数
 function deleteItemEventFun(e) {
-    console.log(e);
+    // console.log(e);
 
   
     //获取获取当前被单击的删除按钮
@@ -144,6 +175,57 @@ function deleteItemEventFun(e) {
     displaySelectedTotal();
     
  
+}
+
+// 增加减少按钮触发函数
+function changeQtyEventFun(e) {
+
+    //   //获取获取当前订单节点
+    //    let node = this.parentNode.parentNode;
+    //    console.log(node);
+    //获取购物车订单列表根元素
+    let cartListNode = document.querySelector('#cartList');
+  
+      // 获取当前订单数量节点
+      let qtyNode = node.querySelector(dataNameJson.qty);
+    // let qtyNode = currItemNode.querySelector('[data-name="qty"]');
+    //  console.log(qtyNode);
+  
+    // 获取当前订单数量
+    let qty = parseInt(qtyNode.textContent);
+     console.log(qty);
+
+    // 获取当前操作是+号还是-号
+    let AddOrMinus = this.textContent;
+   console.log(AddOrMinus);
+
+    // 获取当前订单的id
+    let id = node.id;
+     console.log(id);
+
+    // 获取当前订单的小计
+    let subPrice = node.querySelector(dataNameJson.subPrice);
+    // console.log(subPrice);
+    // 获取当前订单的单价
+    let PriceNode = node.querySelector(dataNameJson.price);
+    console.log(PriceNode);
+
+    // 订单数量加或减
+    if (AddOrMinus == '+') {
+        qty++;
+    } else {
+        qty--;
+        if (qty <= 0) { qty = 1; return; }
+    }
+    // 修改页面订单数量
+    qtyNode.textContent = qty;
+    // 调用指定某个订单数量加1/减1的方法
+    cart.changeQty(id, AddOrMinus);
+    // 修改小计
+    subPrice.textContent = (qtyNode.textContent *PriceNode.textContent).toFixed(2);
+    // 修改商品的总数和总价格
+    displaySelectedTotal();
+
 }
 
 
