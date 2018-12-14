@@ -42,6 +42,7 @@
         order = new Order(product, 5, true);
         // 将新商品加入购物车（本地存储）
         cart.addToCart(order);
+        cart .changeQty(01, "2");
 
         console.log(cart.getDataFromLocalStorage());
         console.log(cart.getSelectedQty());

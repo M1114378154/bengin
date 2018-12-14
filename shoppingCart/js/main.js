@@ -263,11 +263,12 @@ class ShoppingCart {
       // 减少/增加指定商品的数量（+1或者-1）
       changeQty(id, op) {
         let cartData = this.getDataFromLocalStorage();
+        // console.log(cartData);
         let orderList = cartData.orderList;
         let order = this.find(id,orderList);
         // console.log(index);
         if (order == null) {
-            console.log('订单id有误');
+            // console.log('订单id有误');
             return;
         } else {
             if (op == '+') {
