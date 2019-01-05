@@ -44,6 +44,13 @@
         cart.addToCart(order);
         cart .changeQty(01, "2");
 
+        //又创建一个商品
+        product = new Product("03", "鼠标", "2.jpg",199.00);
+        //又创建一个订单
+        order = new Order(product, 2, true);
+        //将订单order放入到购物车里
+        cart.addToCart(order);
+
         console.log(cart.getDataFromLocalStorage());
         console.log(cart.getSelectedQty());
         console.log(cart.getSelectedAmount());

@@ -10,5 +10,11 @@
         "Sname":"水果",
         "imgSRC":"2.jpg",
         "price":"10.00"
-    }
+    },
+    {
+        "id":"03",
+       "Sname":"蔬菜",
+       "imgSRC":"2.jpg",
+       "price":"10.00"
+   }
 ]
