@@ -1,45 +1,45 @@
-localStorage.setItem("key", "value");//存储变量名为key，值为value的变量 
-localStorage.getItem("key");//获取存储的变量key的值
-localStorage.removeItem("key")//删除变量名为key的存储变量
+// localStorage.setItem("key", "value");//存储变量名为key，值为value的变量 
+// localStorage.getItem("key");//获取存储的变量key的值
+// localStorage.removeItem("key")//删除变量名为key的存储变量
 
-var btnList = document.querySelectorAll('.btn-group .btn');
-var totalQty = document.getElementsByName('totalQty')[0];
+// var btnList = document.querySelectorAll('.btn-group .btn');
+// var totalQty = document.getElementsByName('totalQty')[0];
 
 
 
-for (const key in btnList) {
-    if (btnList.hasOwnProperty(key)) {
-        const element = btnList[key];
-        switch (element.name) {
-            case 'increase': element.addEventListener('click', increaseValue); break;
-            case 'decrease': element.addEventListener('click', decreaseValue); break;
-            case 'addToCart': element.addEventListener('click', addToCart); break;
-        }
-    }
-}
-function increaseValue(e) {
-    var qtyObj = e.target.nextElementSibling;
-    var qty = parseInt(qtyObj.innerText);
-    qty++;
-    qtyObj.innerText = qty;
-    console.log(qty);
-}
-function decreaseValue(e) {
-    var qtyObj = e.target.previousElementSibling;
-    var qty = parseInt(qtyObj.innerText);
-    if (qty > 1) qty--;
-    else qty = 0;
-    qtyObj.innerText = qty;
-    console.log(qty);
-}
+// for (const key in btnList) {
+//     if (btnList.hasOwnProperty(key)) {
+//         const element = btnList[key];
+//         switch (element.name) {
+//             case 'increase': element.addEventListener('click', increaseValue); break;
+//             case 'decrease': element.addEventListener('click', decreaseValue); break;
+//             case 'addToCart': element.addEventListener('click', addToCart); break;
+//         }
+//     }
+// }
+// function increaseValue(e) {
+//     var qtyObj = e.target.nextElementSibling;
+//     var qty = parseInt(qtyObj.textContent);
+//     qty++;
+//     qtyObj.textContent = qty;
+//     console.log(qty);
+// }
+// function decreaseValue(e) {
+//     var qtyObj = e.target.previousElementSibling;
+//     var qty = parseInt(qtyObj.textContent);
+//     if (qty > 1) qty--;
+//     else qty = 0;
+//     qtyObj.textContent = qty;
+//     console.log(qty);
+// }
 
-function addToCart(e) {
-    var qtyObj = e.target.previousElementSibling.previousElementSibling;
-    var qty = parseInt(qtyObj.innerText);
-    var total = parseInt(totalQty.innerText);
-    total += qty;
-    totalQty.innerText = total;
-}
+// function addToCart(e) {
+//     var qtyObj = e.target.previousElementSibling.previousElementSibling;
+//     var qty = parseInt(qtyObj.textContent);
+//     var total = parseInt(totalQty.textContent);
+//     total += qty;
+//     totalQty.textContent = total;
+// }
 
 //商品类
 class Product {
@@ -57,12 +57,11 @@ class Product {
 // 订单类成员
 class Order {
     constructor(product, qty, selectStatus) {
-
         this.id = product.id;
         this.Sname = product.Sname;
         this.price = product.price;
         this.imgSRC = product.imgSRC;
-        this.qty = qty;
+        this.qty = product.qty;
         this.selectStatus = selectStatus;
     }
 }

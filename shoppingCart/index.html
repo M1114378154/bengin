@@ -48,20 +48,21 @@
       </nav>
 </div>
 
+<main role="main">
  <div class="album py-5 bg-light" id="cart">
   <div class="container">
    <div class="row" id="productList">
-      <div class="col-md-3" id="productExample">
+      <div class="col-md-3 d-none" id="productExample">
         <div class="card mb-4 box-shadow">
           <img data-name="imgSrc" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="./images/2.jpg" data-holder-rendered="true">
           <div class="card-body">
-            <p class="card-text" data-name="title">鸟巢</p>
+            <p class="card-text text-nowrap" data-name="title">鸟巢</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-danger"  name='decrease' data-operator='decrease'>-</button>
                 <button type="button" class="btn btn-sm btn-outline-danger display" name='qty'  data-name='qty'>1</button>
                 <button type="button" class="btn btn-sm btn-outline-danger" name='increase' data-operator='increase'>+</button>
-                <button type="button" class="btn btn-sm btn-outline-danger"  name='addToCart' data-operator='addToCart' data-id="01">加入购物车</button>
+                <button type="button" class="btn btn-sm btn-outline-danger" name='addToCartNum' data-operator='addToCartNum' data-id="01">加入购物车</button>
               </div>
               <small class="text-muted" data-name="unitPrice">￥99.00</small>
             </div>
@@ -124,9 +125,10 @@
 
     </div>
   </div>-->
-</div> 
+ 
+</main>
 
-  <!-- <script>
+   <!-- <script>
     var totalQty =document.getElementById('cart');
     var totalQty=document.querySelector('.badge');
     console.log(totalQty);
@@ -152,26 +154,26 @@
 
 function increaseValue(e){
       var qtyObj= e.target.previousElementSibling;  
-      var qty=parseInt(qtyObj.innerText);
+      var qty=parseInt(qtyObj.textContent);
       qty++;
-      qtyObj.innerText=qty;
+      qtyObj.textContent=qty;
       console.log(qty);        
 }
 function decreaseValue(e){
     var qtyObj= e.target.nextElementSibling;
-    var qty=parseInt(qtyObj.innerText);
+    var qty=parseInt(qtyObj.textContent);
    if(qty>1) qty--;
    else qty=0;
-    qtyObj.innerText=qty;
+    qtyObj.textContent=qty;
     console.log(qty);        
 }
 
 function addToCart(e){
     var qtyObj=  e.target.previousElementSibling.previousElementSibling;
-    var qty=parseInt(qtyObj.innerText);
-    var total=parseInt(totalQty.innerText);
+    var qty=parseInt(qtyObj.textContent);
+    var total=parseInt(totalQty.textContent);
     total+=qty;
-    totalQty.innerText=total;  
+    totalQty.textContent=total;  
 }
 
 

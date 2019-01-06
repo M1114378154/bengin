@@ -62,7 +62,7 @@ function displayOrderList() {
 
         //获取单价的所有节点
         let priceNew = orderNew.querySelector('[data-name="price"]');
-        priceNew.textContent = (order.price).toFixed(2);
+        priceNew.textContent = (order.price);
 
         // 选中状态
         let selectNew = orderNew.querySelector('[data-operator="checkItem"]');
@@ -119,7 +119,8 @@ function displayOrderList() {
 }
 
 
-
+//显示商品总样本数
+//显示已选中商品到总件数和总价格
 function displaySelectedTotal() {
 
     //获取总数相关节点,并设置对应值
