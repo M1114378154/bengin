@@ -63,14 +63,16 @@ function displayOrderList() {
         //获取单价的所有节点
         let priceNew = orderNew.querySelector('[data-name="price"]');
         priceNew.textContent = (order.price);
-
+        
+    
         // 选中状态
         let selectNew = orderNew.querySelector('[data-operator="checkItem"]');
         selectNew.textContent = order.selectStatus;
 
         //获取小计的节点
-        let subPriceNew = orderNew.querySelector('[data-operator="subPrice"]');
-        subPriceNew.textContent = (order.price * order.qty).toFixed(2);
+        let subPriceNew = orderNew.querySelector('[data-name="subPrice"]');
+        // console.log(subPriceNew);
+        subPriceNew.textContent = (order.price * order.qty);
 
         //获取数量
         let qtyNew = orderNew.querySelector('[data-name="qty"]');
@@ -128,10 +130,11 @@ function displaySelectedTotal() {
     let totalNode = document.querySelector(dataNameJson.units);
 
     totalNode.textContent = cart.getTotalUnits();
+    // totalNode.textContent = cart.getDataFromLocalStorage().units;
 
 
     totalNode = document.querySelector(dataNameJson.selectedQty);
-    // console.log(dataNameJson.selectedQty);
+    // console.log(totalNode);
     totalNode.textContent = cart.getSelectedQty();
 
     totalNode = document.querySelector(dataNameJson.selectedAmount);
@@ -157,13 +160,13 @@ function regEvent() {
 
     //注册加号事件
     elment = document.querySelectorAll(operatorNameJson.increase);
-      console.log(elment);
+    //   console.log(elment);
     for (const i in elment) {
         elment[i].onclick = changeQtyEventFun;
     }
     //注册减号事件
     elment= document.querySelectorAll(operatorNameJson.decrease);
-    console.log(elment);
+    // console.log(elment);
     for (const i in elment) {
         elment[i].onclick = changeQtyEventFun;
     }
@@ -225,23 +228,23 @@ function deleteItemEventFun(e) {
 }
 
 // 增加减少按钮触发函数
-function changeQtyEventFun(e) {
+function changeQtyEventFun() {
 
     //   //获取获取当前订单节点
       let node = this.parentNode.parentNode.parentNode;
-//  console.log(node);s
+//   console.log(node);
     //获取购物车订单列表根元素
-    let cartListNode = document.querySelector('#cartContent');
-    // console.log(cartListNode);
+  //  let cartListNode = document.querySelector('#cartContent');
+    //console.log(cartListNode);
 
     // 获取当前订单数量节点
       let qtyNode = node.querySelector(dataNameJson.qty);
     // let qtyNode = cartListNode.querySelector('[data-name="qty"]');
-    //  console.log(qtyNode);
+    // console.log(qtyNode);
 
     // 获取当前订单数量
     let qty = parseInt(qtyNode.textContent);
-//  console.log(qty);
+ //console.log(qty);
 
     // 获取当前操作是+号还是-号
     let AddOrMinus = this.textContent;
@@ -249,15 +252,16 @@ function changeQtyEventFun(e) {
 
     // 获取当前订单的id
     let id = node.id;
-    // console.log(id);
+    //  console.log(id);
 
 
     // 获取当前订单的小计
-    let subPrice = node.querySelector('[data-operator="subPrice" ]');
-    // console.log(dataNameJson.subPrice);
+    // let subPrice = node.querySelector('[data-name="subPrice"]');
+    let subPrice = node.querySelector(dataNameJson.subPrice);
+    //  console.log(subPrice);
     // 获取当前订单的单价
-    let PriceNode = node.querySelector(dataNameJson.price);
-    //  console.log(PriceNode);
+    let PriceNode = document.querySelector(dataNameJson.price);
+    // console.log(PriceNode);  
 
     // 订单数量加或减
     if (AddOrMinus == '+') {
@@ -269,9 +273,9 @@ function changeQtyEventFun(e) {
     // 修改页面订单数量
     qtyNode.textContent = qty;
     // 调用指定某个订单数量加1/减1的方法
-    cart.changeQty(id, AddOrMinus);
+    cart.changeQtyEventFun(id, AddOrMinus);
     // 修改小计
-    subPrice.textContent = (qtyNode.textContent * PriceNode.textContent).toFixed(2);
+    subPrice.textContent = (qtyNode.textContent * PriceNode.textContent);
     // 修改商品的总数和总价格
     displaySelectedTotal();
 

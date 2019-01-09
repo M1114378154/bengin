@@ -3,24 +3,24 @@
         "id":"01",
         "Sname":"鸟巢",
         "imgSRC":"2.jpg",
-        "price":"99.00"
+        "price":"99"
     },
     {
         "id":"02",
         "Sname":"牛奶",
         "imgSRC":"2.jpg",
-        "price":"10.00"
+        "price":"10"
     },
     {
          "id":"03",
         "Sname":"水果",
         "imgSRC":"2.jpg",
-        "price":"10.00"
+        "price":"10"
     },
     {
         "id":"04",
        "Sname":"蔬菜",
        "imgSRC":"2.jpg",
-       "price":"10.00"
+       "price":"10"
    }
 ]
