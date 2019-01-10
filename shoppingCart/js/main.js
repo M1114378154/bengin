@@ -113,13 +113,15 @@ class ShoppingCart {
     getSelectedQty() {
         let selectQty = 0;
         let cartdata = this.getDataFromLocalStorage();
-        for (let i = 0; i < cartdata.orderList.length; i++) {
-            if (cartdata.orderList[i].selectStatus) {
-                selectQty += cartdata.orderList[i].qty;
+        let orderList = cartdata.orderList;
+        for (let i in orderList) {
+            if (orderList[i].selectStatus) {
+              //如果新加入订单商品已经在购物车中,则变更订单列表对应的商品数
+              selectQty += orderList[i].qty;//新增对应的数量cont
             }
+          }
+          return selectQty;
         }
-        return selectQty;
-    }
 
     // 获取选中对象列表的总价格
     // 1、获取购物车数据：解决如何获取，存放变量
@@ -135,7 +137,7 @@ class ShoppingCart {
         for (let i in orderList) {
 
             if (orderList[i].selectStatus) {
-                selectAmount += cartdata.orderList[i].price * cartdata.orderList[i].qty;
+                selectAmount +=orderList[i].price * orderList[i].qty;
             }
         }
         return selectAmount;
@@ -270,7 +272,7 @@ class ShoppingCart {
     }
     
       // 减少/增加指定商品的数量（+1或者-1）
-      changeQty(id, op) {
+      changeQtyEventFun(id, op) {
         let cartData = this.getDataFromLocalStorage();
         // console.log(cartData);
         let orderList = cartData.orderList;
