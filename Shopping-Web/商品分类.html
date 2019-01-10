@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 顶部 */
+        .box{
+            width: 100%;
+            height: 120%;
+            position: absolute;
+        }
+     
+        .hm-topBar{
+             /* 顶部 */
+            width: 100%;
+            height: 45px;
+            background: url(./image/箭头.png) no-repeat;
+             /* 设置箭头 */
+            background-size: 35px 40px;
+             /* 分割线 */
+            border-bottom: 1px solid #cccccc;
+            /* position: absolute; */
+            position: relative;
+        }
+        .hm-topBar>[class^="icon-"]{
+             /* 设置“分类搜索”的定位 */
+            position: absolute;
+            /* 设置搜索图标 */
+            top: 0;
+            height: 44px;
+            width: 40px;
+            padding: 12px 10px;
+              /* 规定背景的绘制区域 */
+            background-clip: content-box;
+             /* 相对于内容框来定位背景图像 */
+            background-origin: content-box;
+        }
+        .hm-topBar>.icon-back{
+            left:0;
+            background-position: -20px 0;
+        }
+        .hm-topBar>.icon-menu{
+             /* 设置搜索图标 */
+            right: 1%;
+            background-position: -60px 0;
+            background: url(./image/搜索.png) no-repeat;
+            background-size: 35px 40px;
+            position: absolute;
+
+        }
+        .hm-topBar>form{
+              /* 设置搜索栏的宽高和内边距 */
+            width: 100%;
+            height: 44px;
+            padding: 0 40px;
+        }
+        .hm-topBar>form>input{
+              /* 设置搜索栏的宽 */
+            width: 70%;
+             /* 搜索栏的样式 */
+            border: 1px solid skyblue;
+             /* 搜索栏的圆边 */
+            border-radius: 5px;
+            /* 搜索栏的高 */
+            height: 30px;
+             /* 与上顶拉开距离 */
+            margin-top: 7px;
+             /* 字体居中 */
+            text-align: center;
+        }
+        .hm-topBar>h3{
+            text-align: center;
+            line-height: 44px;
+            font-weight: normal;
+        }
+        
+        /* 左侧栏 */
+        .hm-category-left{
+             /* 设置框的宽高 */
+            width: 90px;
+            height: 100%;
+            overflow: hidden;
+             /* 图标向左浮动 */
+            float: left;
+             /* 设置内边距来拉开父子之间的距离使字完全呈现出来 */
+            padding: 10px 30px 0 0;
+        }
+        .hm-category-left>ul>li{
+             /* 字体的宽高 */
+         width: 90px;
+         height: 70px;
+          /* 字体向框居中对齐 */
+         text-align: center;
+          /* 行高 */
+         line-height: 70px; 
+         /* 设置线框 */
+         border-right: 1x solid #cccccc;
+         border-bottom: 1px solid #cccccc;
+         /* 去掉圆点 */
+         list-style: none;
+         
+        }
+        .hm-category-left>ul>li.now{
+            border-right: none;
+             /* 设置第二个li的字体颜色 */
+            color:tan;
+        }
+
+        /* 右侧 */
+        .hm-category-right{
+            /* 显示照片 */
+            overflow: hidden;
+            height: 100%;
+        }
+        .hm-category-right-box{
+              /* 设置右边分类的内边距 */
+            padding: 0 10px;
+        }
+        .hm-category-right-box>.banner{
+             /* 设置广告的宽与顶分开距离 */
+            width: 100%;
+            padding-top: 5px;
+            display: block;
+        }
+        .hm-category-right-box>.banner>img{
+             /* 设置广告的宽和搜索栏分开距离 */
+            width: 100%;
+            /* margin: 70px 0 0 10px; */
+         }
+
+        .hot-cat{
+              /* 设置热门分类这一块的上外边距 */
+            margin-top: 1px;
+           
+        }
+        .hot-cat>h2{
+             /* 热门分类的字号 */
+            font-size: 15px;
+        }
+        .hot-cat>ul{
+            /* 设置图片与文字的宽 */
+            width: 100%;
+            /* height: 100%;  */
+        }
+        .hot-cat>ul>li{
+            /* 设置图片文字的大小，图片左浮动 */
+            width: 33%;
+            float: left;
+            list-style: none;
+            /* padding-left: 20px; */
+
+        }
+        .hot-cat>ul>li>a{
+            /* 设置块元素 */
+            display: block;
+            /* 设置文字居中 */
+            text-align: center;
+            padding-top: 10px;
+            text-decoration: none;
+            /* margin-left: 30px; */
+           
+        }
+        .hot-cat>ul>li>a>img{
+            /* 设置图片的大小和位置 */
+            width: 50%;
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+            /* list-style: none; */
+            /* position: relative; */
+            
+        }
+        .hot-cat p{
+            /* 设置字体的颜色 */
+            color: skyblue;
+            
+        }
+
+
+        
+
+    </style>
+</head>
+
+<body>
+    <!-- 顶部 -->
+    <div class="box">
+
+        <header class="hm-topBar">
+            <a href="#" class="icon-back"></a>
+            <form action="#">
+                <input type="search" placeholder="分类搜索">
+            </form>
+            <a href="#" class="icon-menu"></a>
+        </header>
+
+        <!-- 分类 -->
+        <!-- <div class="boxtwo"> -->
+        <div class="hm-category-left">
+            <ul>
+                <li>热门推荐</li>
+                <li class="now">潮流女装</li>
+                <li>品牌男装</li>
+                <li>内衣配饰</li>
+                <li>家用电器</li>
+                <li>电脑办公</li>
+                <li>手机数码</li>
+                <li>母婴频道</li>
+                <li>图书</li>
+                <li>家居生活</li>
+                <li>家具建材</li>
+                <li>家居家纺</li>
+            </ul>
+        </div>
+
+        <!-- 右边分类 -->
+        <div class="hm-category-right">
+            <div class="hm-category-right-box">
+                <a class="banner" href="#">
+                    <img src="./image/广告.png" alt="">
+                </a>
+                <div class="hot-cat">
+                    <h2>热门分类</h2>
+                    <ul>
+                        <li>
+                            <a href="./购物车.html">
+                                <img src="./image/图.jpg" alt="">
+                                <p>化妆水</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./购物车.html">
+                                <img src="./image/图.jpg" alt="">
+                                <p>化妆水</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./购物车.html">
+                                <img src="./image/图.jpg" alt="">
+                                <p>化妆水</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./购物车.html">
+                                <img src="./image/图.jpg" alt="">
+                                <p>化妆水</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./购物车.html">
+                                <img src="./image/图.jpg" alt="">
+                                <p>化妆水</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./购物车.html">
+                                <img src="./image/图.jpg" alt="">
+                                <p>化妆水</p>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="">
+                                <img src="./image/图.jpg" alt="">
+                                <p>乳霜</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./image/图.jpg" alt="">
+                                <p>乳霜</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./image/图.jpg" alt="">
+                                <p>乳霜</p>
+                            </a>
+                        </li>-->
+                    </ul> 
+
+
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+</body>
+
+</html>

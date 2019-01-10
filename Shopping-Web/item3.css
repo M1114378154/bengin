@@ -1,0 +1,344 @@
+/* body{
+    background: #f5f5f5;
+    min-width: 300px;
+} */
+/* 头部 */
+ .content {
+    /* position: relative; */
+    width: 100%;
+    margin: 0 auto;
+    /* height: 100%; */
+}  
+.topBar{
+    /* 设置头部的宽高与样式 */
+   width: 100%;
+   height: 50px;
+    background-color:skyblue; 
+   background-size: 1px 44px;
+   border-bottom: 1px solid #ccc;
+   /* 设置定位让框与字不分开 */
+   position: absolute;  
+}
+.topBar>[class^="icon_"]{
+    /* 设置绝对定位让头部的字能对齐 */
+    position: absolute;
+    /* 设置“管理”的位置 */
+    top:0;
+    height: 44px;
+    width: 40px;
+    /* 设置外边距使“返回”、“管理”能对齐 */
+    padding: 10px 10px;
+    /* 设置背景从什么位置开始显示 */
+    background-clip: content-box;
+     /* 设置背景从什么位置开始定位 */
+    background-origin: content-box;
+}
+.topBar > .icon_back{
+    /* 设置“返回”样式 */
+    color: white;
+    left: 0;
+    background-position: -20px 0;
+   text-decoration: none;
+     
+}
+.topBar > .icon_menu{
+    /* 设置“管理”样式 */
+    color: white;
+    right:0;
+    background-position: -60px 0;
+    text-decoration: none;
+}
+.topBar > h3{
+    /* 设置“购物车”的位置与样式 */
+    text-align: center;
+    line-height: 4px;
+    font-weight: normal;
+}
+
+ /* 店铺 */
+ .shop{
+     /* 设置购物车的内容 */
+     width: 100%;
+     border-bottom:1px solid #ccc;
+     border-top:1px solid #ccc;
+     background: #fff;
+     margin-top: 10px;
+ }
+ .shop >.shop_tit{
+    /* 设置店名的颜色 */
+     color: #d8505c;
+     /* 设置内容的高、行高与定位 */
+     height: 70px;
+     line-height: 120px;
+     position: relative;
+ }
+ /* .shop >.shop_tit >.shop_tit_left
+ {
+     position: absolute;
+     width: 40px;
+ } */
+
+ .shop >.shop_tit >.shop_tit_right{
+     /* 设置右边内容的宽和左内边距使得与左边的√分开 */
+     width: 100%;
+     padding-left: 5%;  
+ }
+ .shop >.shop_tit >.shop_tit_right > .imgBox{
+     /* 爱心图片向左浮动 */
+     float: left;
+     /* 设置爱心图片的宽高和上外边距 */
+     width: 40px;
+     height: 20px;
+     margin-top: 50px;
+ }
+ .shop >.shop_tit >.shop_tit_right >.name{
+     /* 右边内容向左浮动 */
+     float: left;
+ }
+ 
+ /* 商品盒子 */
+ .product{
+     /* 设置线条 */
+     border-top: 1px solid #ccc;
+     /* 线与内容之间的高 */
+     height: 120px;
+     /* 设置内边距拉开线与图片的距离 */
+     padding: 20px 0;
+ }
+ .product_left{
+     /* 左边图片（大衣）的绝对定位 */
+     position: absolute;
+     width: 40px;
+ }
+ .product_right{
+     /* 右边（字体、删除）的宽和作内边距 */
+     width: 100%;
+     padding-left: 40px;
+
+ }
+ .product_right .product_img{
+     /* 设置图片的宽高和左浮动 */
+     height: 120px;
+     width: 100px;
+     float: left;
+ }
+ .product_right .product_img img{
+     /* 设置图片宽高 */
+     width: 100%;
+     height: 100%;
+ }
+ .product_right .product_info{
+     /* 右边字体、钱、数量的内边距 */
+     overflow: hidden;/*内容会被修剪*/
+     padding: 0 15px;
+ }
+ .product_right .product_info .name_img{
+     /* 设置衣服的字体形容样式 */
+     height: 35px;
+     line-height: 18px;
+     display: block; 
+     overflow: hidden;
+     text-decoration: none;
+ }
+ .product_right .product_info .price{
+     /* 设置钱的样式 */
+     color: #d8505c;
+     padding-top: 5px;
+ }
+
+.option .f_left span{
+    /* 设置数量的“-”符号的样式 */
+    border: 1px solid #ccc;
+    height: 24px;
+    width: 32px;
+    float: left;
+    text-align: center;
+ 
+}
+.option .f_left span:first-of-type{
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.option .f_left span:last-of-type{
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.option .f_left input{
+    /* 设置"-"符号旁边框的样式 */
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    height: 24px;
+    width: 32px;
+    float: left;
+    text-align: center;
+}
+/* .option .f_right .up{
+    background: url("./images/3.png");
+    background-size: 20px 5px;
+    width: 20px;
+    height: 5px;
+    display: block;
+    margin-left: -1px;
+} */
+/* .option .f_right .down{
+    background: url("../Item3/images/3.png")no-repeat;
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    display: block;
+    
+} */
+.option .f_right img
+{
+    /* 设置删除样式 */
+    height: 60px;
+    /* margin-top: -20px; */
+    float: right;
+    display: block;
+    margin-left: -1px;
+}
+.check_box{
+    /* 设置√的样式 */
+    height: 100px;
+    width: 60px;
+    padding: 7px 60px;
+    background: url("./images/4.png")no-repeat;
+    background-size: 50px 70px;
+    background-origin: content-box;
+    background-clip: content-box;
+    display: block;
+}
+/* .check_box[checked]
+{
+    background-position: 10px 0;
+} */
+
+/* 弹出删除动画框 */
+
+.win{
+    /* 设置显示是否删除键 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.6);
+     display: none;    
+}
+.win> .win-box{
+    /* 设置是否删除键的样式位置 */
+    width: 65%;
+    height: 130px;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 6px;
+    padding: 0 10px;
+    margin-top: 200px;
+}
+.win> .win-box> .text{
+    /* 设置是否删除键的字体样式位置 */
+    line-height: 75px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+}
+.win> .win-box> .btn{
+    /* 设置“取消、确定”的内边距位置 */
+    padding: 10px 0;
+}
+.win> .win-box> .btn a{
+    /* 设置“取消、确定”框的大小 */
+    width: 45%;
+    height: 36px;
+    /* 设置字体的行高和居中对齐 */
+    line-height: 36px;
+    text-align: center;
+     float: left; 
+    border-radius: 4px;
+}
+.win> .win-box> .btn> .cancel{
+    /* 设置确定键 */
+    margin-right: 9%;
+    border:1px solid #ccc;
+    text-decoration: none;
+}
+.win> .win-box> .btn> .submit{
+    /* 设置取消键 */
+    background: #d8505c;
+    color: #fff;
+    text-decoration: none;
+}
+
+.InDown{
+    -webkit-animation: InDown 1s;
+    /* 动画缩进1秒 */
+    animation: InDown 1s;
+}
+
+/* 动画移动 */
+@keyframes InDown{
+    
+    0%{
+        opacity: 0;
+        -webkit-transform: translateY(-3000px);
+        transform: translateY(-3000px);
+    }
+    60%{
+        opacity: 1;
+        -webkit-transform: translateY(30px);
+        transform: translateY(30px);
+    }
+    75%{
+        -webkit-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+    90%{
+        -webkit-transform: translateY(5px);
+        transform: translateY(5px);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+  @-webkit-keyframes InDown{
+    0%{
+        opacity: 0;
+        -webkit-transform: translateY(-3000px);
+        transform: translateY(-3000px);
+    }
+    60%{
+        opacity: 1;
+        -webkit-transform: translateY(30px);
+        transform: translateY(30px);
+    }
+    75%{
+        -webkit-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+    90%{
+        -webkit-transform: translateY(5px);
+        transform: translateY(5px);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
